@@ -1,0 +1,19 @@
+[default]
+
+[default.security]
+# Set secret key in .secrets.toml
+# SECRET_KEY = ""
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_MINUTES = 600
+
+[default.server]
+port = 8000
+host = "127.0.0.1"
+log_level = "info"
+reload = false
+
+[default.db]
+uri = "postgresql+psycopg2://postgres:Azozazoz1@localhost:5432/smart_life_organizer"
+connect_args = {}
+echo = true

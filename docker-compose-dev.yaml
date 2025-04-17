@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME_DB__uri=postgresql://postgres:postgres@db:5432/smart_life_organizer
+      - PROJECT_NAME_DB__connect_args={}
+    volumes:
+      - .:/home/app/web
+    depends_on:
+      - db
+  db:
+    build: postgres
+    image: smart_life_organizer_postgres-13-alpine-multi-user
+    volumes:
+      - $HOME/.postgres/smart_life_organizer_db/data/postgresql:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_DBS=smart_life_organizer, smart_life_organizer_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

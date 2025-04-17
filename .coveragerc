@@ -1,0 +1,8 @@
+[run]
+source = smart_life_organizer
+
+[report]
+omit =
+    */python?.?/*
+    */site-packages/nose/*
+    smart_life_organizer/main.py
